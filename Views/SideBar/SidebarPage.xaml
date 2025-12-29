@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Anacrusa.Views.SideBar.SideBarPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:Anacrusa.Views.SideBar"
+    Title="Anacrusa">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="SidebarColumn" Width="72"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <VerticalStackLayout Grid.Column="0" Spacing="4" >
+
+            <!-- TOP: Hamburger + App icon + App name -->
+            <Grid HeightRequest="64" Padding="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Hamburger button -->
+                <Button Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        Clicked="OnToggleClicked"
+                        WidthRequest="40"
+                        HeightRequest="40">
+                    <Button.ImageSource>
+                        <FontImageSource Glyph="&#xE5D2;"
+                                         FontFamily="MaterialIcons"
+                                         Size="28"/>
+                    </Button.ImageSource>
+                </Button>
+
+                <!-- App icon + Name -->
+                <HorizontalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center">
+                    <Image Source="logo.png" WidthRequest="80" HeightRequest="80"/>
+                    <Label Text="Anacrusa"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           IsVisible="True"/>
+                </HorizontalStackLayout>
+            </Grid>
+
+            <!-- Separador -->
+            <BoxView
+                HeightRequest="1"
+                Grid.Row="1"
+                HorizontalOptions="Fill"
+                BackgroundColor="#444"
+                Margin="0,6"/>
+
+            <!-- Menu principal -->
+            <control:SideBarItemView x:Name="LibItem" Text="Library" Glyph="&#xE030;" IsExpanded="False">
+                <control:SideBarItemView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLibraryClicked"/>
+                </control:SideBarItemView.GestureRecognizers>
+            </control:SideBarItemView>
+
+            <control:SideBarItemView x:Name="SetlistsItem" Text="Setlists" Glyph="&#xE05F;" IsExpanded="False">
+                <control:SideBarItemView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSetlistsClicked"/>
+                </control:SideBarItemView.GestureRecognizers>
+            </control:SideBarItemView>
+
+
+            <!-- Separador -->
+            <BoxView
+               HeightRequest="1"
+               Grid.Row="1"
+               HorizontalOptions="Fill"
+               BackgroundColor="#444"
+               Margin="0,6"/>
+
+            <!-- Settings al final -->
+            <control:SideBarItemView x:Name="SettingsItem" Text="Settings" Glyph="&#xE8B8;" IsExpanded="False">
+                <control:SideBarItemView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingsClicked"/>
+                </control:SideBarItemView.GestureRecognizers>
+            </control:SideBarItemView>
+        
+        </VerticalStackLayout>
+
+        <!-- Contenedor de detalle -->
+        <ContentView x:Name="DetailContainer" Grid.Column="1" BackgroundColor="Transparent"/>
+    </Grid>
+</ContentPage>
