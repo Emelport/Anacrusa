@@ -59,17 +59,15 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Models\" />
-	  <Folder Include="Interfaces\" />
-	  <Folder Include="ViewModels\" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="AppShell.xaml.cs">
 	    <DependentUpon>AppShell.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\SideBar\Structure.xaml.cs">
+	    <DependentUpon>Structure.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -77,7 +75,10 @@
 	  <MauiXaml Update="AppShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\LibraryView.xaml">
+	  <MauiXaml Update="Views\Library\Components\ScoreRowView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Library\LibraryView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SetlistView.xaml">

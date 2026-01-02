@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Anacrusa.Views.Library;
 
 namespace Anacrusa.Views.SideBar
 {

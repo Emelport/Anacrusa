@@ -9,14 +9,21 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="SidebarColumn" Width="72"/>
+            <ColumnDefinition Width="2" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <VerticalStackLayout Grid.Column="0" Spacing="4" >
-
+        <Grid Grid.Column="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*,Auto" RowSpacing="5">
+            <!-- Separador -->
+            <BoxView
+                HeightRequest="1"
+                Grid.Row="0"
+                HorizontalOptions="Fill"
+                BackgroundColor="#444"/>
+            
             <!-- TOP: Hamburger + App icon + App name -->
-            <Grid HeightRequest="64" Padding="4">
+            <Grid  Grid.Row="1" HeightRequest="64" Padding="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -30,8 +37,8 @@
                         HeightRequest="40">
                     <Button.ImageSource>
                         <FontImageSource Glyph="&#xE5D2;"
-                                         FontFamily="MaterialIcons"
-                                         Size="28"/>
+                                            FontFamily="MaterialIcons"
+                                            Size="28"/>
                     </Button.ImageSource>
                 </Button>
 
@@ -39,28 +46,28 @@
                 <HorizontalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center">
                     <Image Source="logo.png" WidthRequest="80" HeightRequest="80"/>
                     <Label Text="Anacrusa"
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"
-                           IsVisible="True"/>
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            IsVisible="True"/>
                 </HorizontalStackLayout>
             </Grid>
 
             <!-- Separador -->
             <BoxView
                 HeightRequest="1"
-                Grid.Row="1"
+                Grid.Row="2"
                 HorizontalOptions="Fill"
                 BackgroundColor="#444"
                 Margin="0,6"/>
 
             <!-- Menu principal -->
-            <control:SideBarItemView x:Name="LibItem" Text="Library" Glyph="&#xE030;" IsExpanded="False">
+            <control:SideBarItemView x:Name="LibItem" Grid.Row="3" Text="Library" Glyph="&#xE030;" IsExpanded="False">
                 <control:SideBarItemView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnLibraryClicked"/>
                 </control:SideBarItemView.GestureRecognizers>
             </control:SideBarItemView>
 
-            <control:SideBarItemView x:Name="SetlistsItem" Text="Setlists" Glyph="&#xE05F;" IsExpanded="False">
+            <control:SideBarItemView x:Name="SetlistsItem" Grid.Row="4" Text="Setlists" Glyph="&#xE05F;" IsExpanded="False">
                 <control:SideBarItemView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSetlistsClicked"/>
                 </control:SideBarItemView.GestureRecognizers>
@@ -69,22 +76,36 @@
 
             <!-- Separador -->
             <BoxView
-               HeightRequest="1"
-               Grid.Row="1"
-               HorizontalOptions="Fill"
-               BackgroundColor="#444"
-               Margin="0,6"/>
+                HeightRequest="1"
+                Grid.Row="5"
+                HorizontalOptions="Fill"
+                BackgroundColor="#444"
+                Margin="0,6"/>
+
+            <!-- Filler -->
+            <BoxView
+                Grid.Row="6"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"
+                BackgroundColor="Transparent"
+                />
 
             <!-- Settings al final -->
-            <control:SideBarItemView x:Name="SettingsItem" Text="Settings" Glyph="&#xE8B8;" IsExpanded="False">
+            <control:SideBarItemView x:Name="SettingsItem" Grid.Row="7" Text="Settings" Glyph="&#xE8B8;" IsExpanded="False" Padding="0,5">
                 <control:SideBarItemView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSettingsClicked"/>
                 </control:SideBarItemView.GestureRecognizers>
             </control:SideBarItemView>
         
-        </VerticalStackLayout>
+        </Grid>
+        
+        <BoxView
+            Grid.Column="1"
+            WidthRequest="1"
+            BackgroundColor="#444"/>
+
 
         <!-- Contenedor de detalle -->
-        <ContentView x:Name="DetailContainer" Grid.Column="1" BackgroundColor="Transparent"/>
+        <ContentView x:Name="DetailContainer" Grid.Column="2" BackgroundColor="Transparent"/>
     </Grid>
 </ContentPage>

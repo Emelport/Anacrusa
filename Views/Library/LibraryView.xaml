@@ -1,0 +1,104 @@
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Anacrusa.Views.Library.Components"
+    x:Class="Anacrusa.Views.Library.LibraryView">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="10,0">
+
+        <!-- HEADER -->
+        <VerticalStackLayout Padding="5,5">
+            <Label
+                Text="Library"
+                FontSize="28"
+                FontAttributes="Bold"/>
+
+            <Label
+                Text="{Binding TotalCountText}"
+                FontSize="14"
+                TextColor="Gray"/>
+        </VerticalStackLayout>
+
+        <!-- TOOLBAR -->
+        <Grid
+            Grid.Row="1"
+            Padding="5"
+            ColumnDefinitions="Auto,Auto,* ,Auto">          
+
+            <!-- Filtros -->
+            <HorizontalStackLayout>
+                <!--  <Picker Grid.Column="1"/>
+                <Picker Title="Título" Grid.Column="1"/> -->
+            </HorizontalStackLayout>
+
+
+            <!-- Spacer -->
+            <BoxView Grid.Column="2" BackgroundColor="Transparent"/>
+
+            <!-- View toggle -->
+            <HorizontalStackLayout
+                Grid.Column="3"
+                Spacing="6">
+
+                <!-- GRID VIEW (inactive) -->
+                <Border
+                    WidthRequest="36"
+                    HeightRequest="36"
+                    BackgroundColor="#2A2A2A"
+                    StrokeThickness="0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Border.StrokeShape>
+
+                    <Label
+                        Text="&#xF088;"
+                        FontFamily="MaterialIcons"
+                        FontSize="20"
+                        TextColor="#BBBBBB"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                </Border>
+
+                <!-- LIST VIEW (active) -->
+                <Border
+                    WidthRequest="36"
+                    HeightRequest="36"
+                    BackgroundColor="#F5B301"
+                    StrokeThickness="0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Border.StrokeShape>
+
+                    <Label
+                        Text="&#xF101;"
+                        FontFamily="MaterialIcons"
+                        FontSize="20"
+                        TextColor="#1E1E1E"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"/>
+                </Border>
+
+            </HorizontalStackLayout>
+
+
+        </Grid>
+
+
+        <!-- LIST -->
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding Scores}"
+            SelectionMode="Single">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <views:ScoreRowView/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+</ContentView>

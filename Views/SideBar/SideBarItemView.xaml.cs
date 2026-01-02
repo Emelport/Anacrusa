@@ -36,7 +36,7 @@ namespace Anacrusa.Views.SideBar
         private static void OnExpansionChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (SideBarItemView)bindable;
-            control.BindingContext = control; // refresca la visibilidad del Label
+            control.SectionName.IsVisible = (bool)newValue;
         }
     }
 }
