@@ -32,7 +32,7 @@ namespace Anacrusa.Views.SideBar
             var control = (SideBarItemView)bindable;
             control.Indicator.IsVisible = (bool)newValue;
         }
-
+        
         private static void OnExpansionChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var control = (SideBarItemView)bindable;
